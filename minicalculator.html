@@ -1,0 +1,199 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Masai Calculator</title>
+<style>
+    h1{
+        font-size: 45px;
+        font-weight: bold;
+        text-align: center;
+        color: darkcyan;
+    }
+    .calculator{
+        height: 400px;
+        width: 20%;
+        margin: auto;
+        padding: 40px;
+        box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px; 
+        /* background-color: gray */
+
+    } 
+    #header{
+        height:40px ;
+        width: 90% ;
+        margin: auto; 
+        border-radius: 5px;
+        box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
+        padding: 7px;
+        background-color: rgb(88, 227, 98);
+
+    }
+    
+    .buttons{
+        display: grid;
+        grid-template-columns: 50px 50px 50px 50px;
+        grid-template-rows: 50px 50px 50px;
+        gap: 7px;
+        justify-content: space-evenly;
+        padding: 15px;
+        font-weight: 900;
+    
+
+    }
+    .buttons>button{
+        padding: 15px;
+        text-align: center;
+        box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
+        border-radius: 8px;
+        background-color: chocolate;
+        
+        
+    }  
+    #equal{
+        padding: 15px;
+        text-align: center;
+        box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
+        border-radius: 8px;
+        gap: 7px;
+        background-color: burlywood;
+        width: 50px;
+        margin-left: 20px;
+
+    }
+    #clear{
+        padding: 15px;
+        text-align: center;
+        box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
+        border-radius: 8px;
+        gap: 7px;
+        background-color: burlywood;
+        width: 50px;
+    }
+  
+     
+    .operator{
+        display: grid; 
+        grid-template-columns: 50px 50px 50px 50px;
+        grid-template-rows: 50px 50px 50px 50px;
+        gap: 7px;
+        justify-content: space-evenly;
+        margin-top: 3px;    
+        padding: 15px;
+        font-weight: 900;
+        
+    }
+    .operator>button{
+        padding: 15px;
+        text-align: center;
+        box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
+        border-radius: 8px;
+        background-color: rgb(198, 225, 49);
+        font-size: larger;
+        
+        
+    }
+    
+</style>
+</head>
+<body>
+    <h1>Masai Calculator</h1>
+    <div>
+        <div class="calculator">
+          <div id= "header"></div>
+          <div class="buttons">
+            <button>1</button>
+            <button>2</button>
+            <button>3</button>
+            <button>4</button>
+            <button>5</button>
+            <button>6</button>
+            <button>7</button>
+            <button>8</button>
+            <button>9</button>
+            <button>0</button>
+          </div>
+          <div>
+            <button id="equal">=</button>
+            <button id="clear">C</button>
+          </div>
+          <div class="operator">
+           <button>+</button>
+           <button>-</button>
+           <button>*</button>
+           <button>/</button>
+          </div>
+
+        </div>
+        
+    </div>
+</body>
+
+<script>
+    let buttons = document.querySelectorAll(".buttons > button");
+    let Operator = document.querySelectorAll(".operator > button");
+    let equal = document.getElementById("equal");
+    let head = document.getElementById("header");
+    let clear = document.getElementById("clear");
+
+    let FirstNumber = "";
+    let SecondNumber = "";
+    IsFirstNumber = true;
+    let Operators = "";
+
+    equal.addEventListener("click" , function()
+    {
+        head.innerText = calculate(FirstNumber,SecondNumber,Operators)
+    })
+   
+    clear.addEventListener("click",function()
+    {
+        head.innerText = "";
+    })
+
+
+    for(let i = 0; i<buttons.length; i++)
+    {
+       buttons[i].addEventListener("click",function()
+       {
+         if(IsFirstNumber === true)
+         {
+              FirstNumber += buttons[i].innerText;
+              header.innerText = FirstNumber;
+         } 
+         else
+         {
+             SecondNumber += buttons[i].innerText;
+             header.innerText = SecondNumber;
+         }
+       })
+    }
+    for(let i =0; i<Operator.length; i++)
+    {
+        Operator[i].addEventListener("click",function()
+        {
+            IsFirstNumber = false;
+            Operators = Operator[i].innerText;
+
+        })
+    }
+    function calculate(FirstNumber,SecondNumber,Operators)
+    {
+
+     switch(Operators)
+       {
+         case "+" :
+         return Number(FirstNumber) + Number(SecondNumber);
+         case "-" :
+         return Number(FirstNumber) - Number(SecondNumber);
+         case "*" :
+         return Number(FirstNumber) * Number(SecondNumber);
+         case "/" :
+          return Number(FirstNumber) / Number(SecondNumber);
+        }
+    }
+
+
+</script>
+</html>
