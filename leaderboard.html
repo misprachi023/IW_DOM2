@@ -24,23 +24,29 @@
         #score{
             color: blue;
             font-size: 20px;
+            height: 60px;
+            width: 130px;
+            background-color: rgb(227, 227, 127);
+            margin: auto;
+            text-align: center;
         }
         .keys{
             display: grid;
-            grid-template-columns: repeat(3, 40px);
+            grid-template-columns: repeat(3, 50px);
             gap: 10px;
             justify-content: center;
+            margin-top: 30px;
 
             
         }
         .keys>button{
             background-color: aqua;
-            height: 40px;
-            width: 40px;
+            height: 50px;
+            width: 50px;
             font-size: large;
-            /* padding: 10px; */
-            border-radius: 10px;
+            
         }
+        
         #enter{
             margin-top: 2%;
             margin-left: 48%;
@@ -53,14 +59,13 @@
 </head>
 <body>
     <div class="head">
-        <div id="min" style="background-color: red; font-weight: 100px;">100</div>
-        <div id="max" style="background-color: green; font-weight: 100px;">120</div>
+        <div id="min" style="background-color: red; font-weight: 100px;">43</div>
+        <div id="max" style="background-color: green; font-weight: 100px;">2019</div>
     </div>
 
     <div class="cont">
         <div id="score"></div>
         <div class="keys">
-            <button>0</button>
             <button>1</button>
             <button>2</button>
             <button>3</button>
@@ -70,6 +75,7 @@
             <button>7</button>
             <button>8</button>
             <button>9</button>
+            <button>0</button>
 
         </div>
 
@@ -98,9 +104,8 @@
        {
           min.innerText = score.innerText;
           score.innerText = "";
-       }
-
-       if(Number(score.innerText)> Number(max.innerText))
+       } 
+        if(Number(score.innerText)> Number(max.innerText))
        {
           max.innerText = score.innerText;
           score.innerText = "";
