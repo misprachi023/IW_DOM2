@@ -29,6 +29,7 @@
             background-color: rgb(227, 227, 127);
             margin: auto;
             text-align: center;
+            
         }
         .keys{
             display: grid;
@@ -39,12 +40,18 @@
 
             
         }
-        .keys>button{
+        .keys>button, .keys+div>button{
             background-color: aqua;
             height: 50px;
             width: 50px;
             font-size: large;
+            cursor: pointer;
             
+        }
+        .keys+div{
+            display: flex;
+            justify-content: center;
+            margin: 10px;
         }
         
         #enter{
@@ -75,10 +82,12 @@
             <button>7</button>
             <button>8</button>
             <button>9</button>
-            <button>0</button>
+            
 
         </div>
-
+        <div>
+            <button>0</button>
+        </div>
     </div>
     <button id="enter">Enter</button>
 </body>
@@ -87,20 +96,21 @@
     let min = document.getElementById("min")
     let max = document.getElementById("max")
     let score = document.getElementById("score")
-    let keys = document.querySelectorAll(".keys > button")
+    let keys = document.querySelectorAll(" button")
     let enter = document.getElementById("enter")
 
-    for(let i =0; i<keys.length; i++)
+    for(let i = 0; i < keys.length-1; i++) 
+       
     {
         keys[i].addEventListener("click", function()
         {
           score.innerText += keys[i].innerText
         })
-    }
+    
 
-    enter.addEventListener("click" , function()
-    {
-       if(Number(score.innerText)< Number(min.innerText))
+      enter.addEventListener("click" , function()
+     {
+       if(Number(score.innerText)< Number(min.innerText) && score.innerText!= "")
        {
           min.innerText = score.innerText;
           score.innerText = "";
@@ -110,9 +120,13 @@
           max.innerText = score.innerText;
           score.innerText = "";
        }
+       else{
+        score.innerText= ""
+       }
 
        
-    })
+     })
 
-
+    }
+    
 </script>
